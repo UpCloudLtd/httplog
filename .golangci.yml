@@ -1,0 +1,165 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - containedctx
+    - contextcheck
+    - dogsled
+    - dupl
+    - errcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - exhaustive
+    - forbidigo
+    - funlen
+    - gochecknoglobals
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - godot
+    - gomoddirectives
+    - goprintffuncname
+    - gosec
+    - govet
+    - importas
+    - ineffassign
+    - makezero
+    - misspell
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - noctx
+    - nolintlint
+    - nosprintfhostport
+    - paralleltest
+    - prealloc
+    - predeclared
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - testpackage
+    - thelper
+    - tparallel
+    - unconvert
+    - unused
+    - usestdlibvars
+    - wastedassign
+    - whitespace
+    - wrapcheck
+  settings:
+    errcheck:
+      check-type-assertions: true
+    goconst:
+      ignore-tests: true
+    gocritic:
+      disabled-checks:
+        - commentFormatting
+        - hugeParam
+        - rangeValCopy
+        - rangeExprCopy
+      enabled-tags:
+        - performance
+      settings:
+        captLocal:
+          paramsOnly: false
+    importas:
+      alias:
+        - pkg: github.com/pkg/errors
+          alias: pkgerrors
+      no-unaliased: true
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+    revive:
+      rules:
+        - name: var-naming
+          arguments:
+            - []
+            - - ACME
+              - BGP
+              - CA
+              - CIDR
+              - CSV
+              - DB
+              - DCMI
+              - DHCP
+              - DSA
+              - ECDSA
+              - EMA
+              - EVI
+              - EVPN
+              - FIFO
+              - FRU
+              - GPU
+              - IB
+              - IPMI
+              - JWT
+              - KV
+              - LAN
+              - LFU
+              - LIFO
+              - LRU
+              - MAC
+              - NIC
+              - PDF
+              - PKI
+              - PSU
+              - PTR
+              - REST
+              - RSA
+              - RX
+              - SCSI
+              - SDN
+              - SHA
+              - SPOE
+              - SSD
+              - TSV
+              - TTL
+              - TX
+              - TXN
+              - ULID
+              - VAT
+              - VCPU
+              - VIP
+              - VLAN
+              - VRF
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - bodyclose
+          - funlen
+          - noctx
+        path: _test\.go
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  fix: true
+formatters:
+  enable:
+    - gofumpt
+  settings:
+    gofumpt:
+      extra-rules: true
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
